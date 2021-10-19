@@ -1,0 +1,56 @@
+{
+    "name": "kwe",
+    "version": "1.0.0",
+    "description": "",
+    "module": "src/index.ts",
+    "main": "dist/kwe.js",
+    "scripts": {
+        "prebuild": "rimraf dist",
+        "build": "rollup -c --environment FORMAT:umd",
+        "start": "rollup -c -w"
+    },
+    "author": "",
+    "license": "ISC",
+    "browserslist": [
+        "last 2 versions",
+        "> 1% in CN",
+        "> 1% in US",
+        "not ie <= 8"
+    ],
+    "devDependencies": {
+        "@babel/core": "^7.15.8",
+        "@babel/preset-env": "^7.15.8",
+        "@babel/preset-typescript": "^7.15.0",
+        "@rollup/plugin-node-resolve": "^13.0.5",
+        "@rollup/plugin-replace": "^3.0.0",
+        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "@typescript-eslint/parser": "^5.0.0",
+        "autoprefixer": "^10.3.7",
+        "cssnano": "^5.0.8",
+        "eslint": "^8.0.1",
+        "git-rev-sync": "^3.0.1",
+        "husky": "^7.0.2",
+        "less": "^4.1.2",
+        "lint-staged": "^11.2.3",
+        "lodash.merge": "^4.6.2",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.3.9",
+        "prettier": "^2.4.1",
+        "pretty-quick": "^3.1.1",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.58.0",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-postcss": "^4.0.1",
+        "rollup-plugin-svg": "^2.0.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-watch": "^4.3.1",
+        "typescript": "^4.4.4"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    }
+}
