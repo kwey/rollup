@@ -10,7 +10,7 @@ export interface IConfig {
 
 export default class KWE {
     static metadata = metadata
-    static prefix = 'kwe'
+    static prefix = 'hy'
     private config: Required<IConfig>
     zero!: Zero
 
