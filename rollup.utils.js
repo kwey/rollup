@@ -1,34 +1,23 @@
 import path from 'path';
 import less from 'less';
+import git from 'git-rev-sync';
 import pkg from './package.json';
 
 export const resolve = function (...args) {
 	return path.resolve(__dirname, ...args);
 };
-// 打包任务的个性化配置
-export const jobs = {
-	esm: {
-		output: {
-			format: 'esm',
-			file: resolve(pkg.module),
-		},
-	},
-	umd: {
-		output: {
-			sourcemap: true,
-			format: 'umd',
-			file: resolve(pkg.main),
-			name: 'KWE',
-		},
-	},
-	min: {
-		output: {
-			format: 'umd',
-			file: resolve(pkg.main.replace(/(.\w+)$/, '.min$1')),
-			name: 'KWE',
-		},
-	},
+
+export const meta = {
+	name: pkg.name,
+	version: pkg.version,
+	hash: '',
+	branch: '',
+	lastModefied: new Date().toISOString(),
 };
+try {
+	meta.hash = git.short();
+	meta.branch = git.branch();
+} catch (error) {}
 
 export const processLess = function (context, payload) {
 	return new Promise((resolve, reject) => {
